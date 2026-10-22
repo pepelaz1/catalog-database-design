@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1100" viewBox="0 0 1900 1100">
+<style>.title{font:700 52px Arial,sans-serif;fill:#102858}.subtitle{font:24px Arial,sans-serif;fill:#526685}.entity{font:700 27px Arial,sans-serif;fill:#fff}.field{font:23px Arial,sans-serif;fill:#122c52}.type{font:21px Arial,sans-serif;fill:#536a8e}.badge{font:700 17px Arial,sans-serif;fill:#1255d8}.rel{font:700 19px Arial,sans-serif;fill:#40577c}.footer{font:20px Arial,sans-serif;fill:#526685}</style>
+<rect width="1900" height="1100" fill="#f3f7ff"/>
+<rect x="0" y="0" width="1900" height="12" fill="#155df5"/>
+<text x="80" y="83" class="title" text-anchor="start">Catalog data model</text>
+<text x="80" y="125" class="subtitle" text-anchor="start">Microsoft SQL Server  ·  six entities  ·  supplier prices with history</text>
+<path d="M540 310 H720" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="576" y="274" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="630" y="295" class="rel" text-anchor="middle">1 : many</text>
+<path d="M1180 310 H1360" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1216" y="274" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="1270" y="295" class="rel" text-anchor="middle">1 : many</text>
+<path d="M540 845 H720" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="576" y="809" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="630" y="830" class="rel" text-anchor="middle">1 : many</text>
+<path d="M1180 845 H1360" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1216" y="809" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="1270" y="830" class="rel" text-anchor="middle">1 : many</text>
+<path d="M1590 480 V690" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1606" y="571" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="1660" y="592" class="rel" text-anchor="middle">1 : many</text>
+<path d="M540 755 H610 V570 H1280 V385 H1360" fill="none" stroke="#7498da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="886" y="532" width="108" height="31" rx="15" fill="#fff" stroke="#d7e4fb"/>
+<text x="940" y="553" class="rel" text-anchor="middle">1 : many</text>
+<rect x="80" y="170" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M106 170 H514 Q540 170 540 196 V238 H80 V196 Q80 170 106 170" fill="#155df5"/>
+<text x="105" y="213" class="entity" text-anchor="start">CATEGORY</text>
+<rect x="104" y="252" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="125" y="271" class="badge" text-anchor="middle">PK</text>
+<text x="159" y="274" class="field" text-anchor="start">id</text>
+<text x="516" y="274" class="type" text-anchor="end">BIGINT</text>
+<rect x="104" y="284" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="125" y="303" class="badge" text-anchor="middle">UQ</text>
+<text x="159" y="306" class="field" text-anchor="start">name</text>
+<text x="516" y="306" class="type" text-anchor="end">NVARCHAR(120)</text>
+<rect x="720" y="170" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M746 170 H1154 Q1180 170 1180 196 V238 H720 V196 Q720 170 746 170" fill="#155df5"/>
+<text x="745" y="213" class="entity" text-anchor="start">PRODUCT</text>
+<rect x="744" y="252" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="765" y="271" class="badge" text-anchor="middle">PK</text>
+<text x="799" y="274" class="field" text-anchor="start">id</text>
+<text x="1156" y="274" class="type" text-anchor="end">BIGINT</text>
+<rect x="744" y="284" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="765" y="303" class="badge" text-anchor="middle">UQ</text>
+<text x="799" y="306" class="field" text-anchor="start">sku</text>
+<text x="1156" y="306" class="type" text-anchor="end">NVARCHAR(80)</text>
+<text x="799" y="338" class="field" text-anchor="start">name</text>
+<text x="1156" y="338" class="type" text-anchor="end">NVARCHAR(240)</text>
+<text x="799" y="370" class="field" text-anchor="start">brand</text>
+<text x="1156" y="370" class="type" text-anchor="end">NVARCHAR(120)</text>
+<rect x="744" y="380" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="765" y="399" class="badge" text-anchor="middle">FK</text>
+<text x="799" y="402" class="field" text-anchor="start">category_id</text>
+<text x="1156" y="402" class="type" text-anchor="end">BIGINT</text>
+<rect x="1360" y="170" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M1386 170 H1794 Q1820 170 1820 196 V238 H1360 V196 Q1360 170 1386 170" fill="#155df5"/>
+<text x="1385" y="213" class="entity" text-anchor="start">SUPPLIER_OFFER</text>
+<rect x="1384" y="252" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="271" class="badge" text-anchor="middle">PK</text>
+<text x="1439" y="274" class="field" text-anchor="start">id</text>
+<text x="1796" y="274" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="284" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="303" class="badge" text-anchor="middle">FK</text>
+<text x="1439" y="306" class="field" text-anchor="start">supplier_id</text>
+<text x="1796" y="306" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="316" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="335" class="badge" text-anchor="middle">FK</text>
+<text x="1439" y="338" class="field" text-anchor="start">product_id</text>
+<text x="1796" y="338" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="348" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="367" class="badge" text-anchor="middle">UQ*</text>
+<text x="1439" y="370" class="field" text-anchor="start">supplier_sku</text>
+<text x="1796" y="370" class="type" text-anchor="end">NVARCHAR(100)</text>
+<text x="1439" y="402" class="field" text-anchor="start">currency</text>
+<text x="1796" y="402" class="type" text-anchor="end">VARCHAR(3)</text>
+<rect x="80" y="690" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M106 690 H514 Q540 690 540 716 V758 H80 V716 Q80 690 106 690" fill="#155df5"/>
+<text x="105" y="733" class="entity" text-anchor="start">SUPPLIER</text>
+<rect x="104" y="772" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="125" y="791" class="badge" text-anchor="middle">PK</text>
+<text x="159" y="794" class="field" text-anchor="start">id</text>
+<text x="516" y="794" class="type" text-anchor="end">BIGINT</text>
+<rect x="104" y="804" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="125" y="823" class="badge" text-anchor="middle">UQ</text>
+<text x="159" y="826" class="field" text-anchor="start">name</text>
+<text x="516" y="826" class="type" text-anchor="end">NVARCHAR(160)</text>
+<text x="159" y="858" class="field" text-anchor="start">active</text>
+<text x="516" y="858" class="type" text-anchor="end">BIT</text>
+<rect x="720" y="690" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M746 690 H1154 Q1180 690 1180 716 V758 H720 V716 Q720 690 746 690" fill="#155df5"/>
+<text x="745" y="733" class="entity" text-anchor="start">IMPORT_BATCH</text>
+<rect x="744" y="772" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="765" y="791" class="badge" text-anchor="middle">PK</text>
+<text x="799" y="794" class="field" text-anchor="start">id</text>
+<text x="1156" y="794" class="type" text-anchor="end">BIGINT</text>
+<rect x="744" y="804" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="765" y="823" class="badge" text-anchor="middle">FK</text>
+<text x="799" y="826" class="field" text-anchor="start">supplier_id</text>
+<text x="1156" y="826" class="type" text-anchor="end">BIGINT</text>
+<text x="799" y="858" class="field" text-anchor="start">source_file</text>
+<text x="1156" y="858" class="type" text-anchor="end">NVARCHAR(260)</text>
+<text x="799" y="890" class="field" text-anchor="start">started_at</text>
+<text x="1156" y="890" class="type" text-anchor="end">DATETIMEOFFSET</text>
+<text x="799" y="922" class="field" text-anchor="start">status</text>
+<text x="1156" y="922" class="type" text-anchor="end">NVARCHAR(16)</text>
+<rect x="1360" y="690" width="460" height="310" rx="26" fill="#fff" stroke="#d4e2fb" stroke-width="2"/>
+<path d="M1386 690 H1794 Q1820 690 1820 716 V758 H1360 V716 Q1360 690 1386 690" fill="#155df5"/>
+<text x="1385" y="733" class="entity" text-anchor="start">PRICE_OBSERVATION</text>
+<rect x="1384" y="772" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="791" class="badge" text-anchor="middle">PK</text>
+<text x="1439" y="794" class="field" text-anchor="start">id</text>
+<text x="1796" y="794" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="804" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="823" class="badge" text-anchor="middle">FK</text>
+<text x="1439" y="826" class="field" text-anchor="start">offer_id</text>
+<text x="1796" y="826" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="836" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="855" class="badge" text-anchor="middle">FK</text>
+<text x="1439" y="858" class="field" text-anchor="start">supplier_id</text>
+<text x="1796" y="858" class="type" text-anchor="end">BIGINT</text>
+<rect x="1384" y="868" width="42" height="27" rx="8" fill="#e9f0ff"/>
+<text x="1405" y="887" class="badge" text-anchor="middle">FK</text>
+<text x="1439" y="890" class="field" text-anchor="start">batch_id</text>
+<text x="1796" y="890" class="type" text-anchor="end">BIGINT</text>
+<text x="1439" y="922" class="field" text-anchor="start">observed_at</text>
+<text x="1796" y="922" class="type" text-anchor="end">DATETIMEOFFSET</text>
+<text x="1439" y="954" class="field" text-anchor="start">price</text>
+<text x="1796" y="954" class="type" text-anchor="end">DECIMAL(14,2)</text>
+<text x="1439" y="986" class="field" text-anchor="start">available</text>
+<text x="1796" y="986" class="type" text-anchor="end">BIT</text>
+<text x="80" y="1054" class="footer" text-anchor="start">PK = primary key   ·   FK = foreign key   ·   UQ = unique   ·   UQ* = unique within supplier</text>
+<text x="1820" y="1054" class="footer" text-anchor="end">Synthetic portfolio example</text>
+</svg>

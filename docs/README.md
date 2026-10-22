@@ -1,5 +1,7 @@
 # Design documents
 
-- `requirements.md`: sample requirements and assumptions to confirm with a real client.
-- `erd.md`: entity-relationship diagram in Mermaid.
-- `design.md`: normalization, indexes, security and performance decisions.
+- `requirements.md`: fictional requirements and assumptions.
+- `erd.md`: editable Mermaid ER diagram.
+- `er-diagram.svg` and `er-diagram.png`: image versions for presentations and proposals.
+- `design.md`: how entities, relationships and constraints map to C# and SQL Server.
+- `tooling.md`: diagram tools and regeneration.

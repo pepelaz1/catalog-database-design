@@ -1,53 +1,57 @@
 # Entity-relationship diagram
 
+The PNG below is useful in proposals. The Mermaid definition is editable in Markdown and rendered directly by GitHub.
+
+![Catalog ER diagram](er-diagram.png)
+
 ```mermaid
 erDiagram
     CATEGORY ||--o{ PRODUCT : classifies
     PRODUCT ||--o{ SUPPLIER_OFFER : has
     SUPPLIER ||--o{ SUPPLIER_OFFER : publishes
     SUPPLIER ||--o{ IMPORT_BATCH : imports
-    IMPORT_BATCH ||--o{ PRICE_OBSERVATION : records
     SUPPLIER_OFFER ||--o{ PRICE_OBSERVATION : tracks
+    IMPORT_BATCH ||--o{ PRICE_OBSERVATION : records
 
     CATEGORY {
-        bigint id PK
-        text name UK
+        bigint Id PK
+        nvarchar Name UK
     }
     PRODUCT {
-        bigint id PK
-        text sku UK
-        text name
-        text brand
-        bigint category_id FK
+        bigint Id PK
+        nvarchar Sku UK
+        nvarchar Name
+        nvarchar Brand
+        bigint CategoryId FK
     }
     SUPPLIER {
-        bigint id PK
-        text name UK
-        boolean active
+        bigint Id PK
+        nvarchar Name UK
+        bit Active
     }
     SUPPLIER_OFFER {
-        bigint id PK
-        bigint supplier_id FK
-        bigint product_id FK
-        text supplier_sku
-        char currency
-        text source_url
+        bigint Id PK
+        bigint SupplierId FK
+        bigint ProductId FK
+        nvarchar SupplierSku
+        varchar Currency
     }
     IMPORT_BATCH {
-        bigint id PK
-        bigint supplier_id FK
-        text source_file
-        timestamptz started_at
-        text status
+        bigint Id PK
+        bigint SupplierId FK
+        nvarchar SourceFile
+        datetimeoffset StartedAt
+        nvarchar Status
     }
     PRICE_OBSERVATION {
-        bigint id PK
-        bigint offer_id FK
-        bigint batch_id FK
-        timestamptz observed_at
-        numeric price
-        boolean available
+        bigint Id PK
+        bigint OfferId FK
+        bigint SupplierId FK
+        bigint BatchId FK
+        datetimeoffset ObservedAt
+        decimal Price
+        bit Available
     }
 ```
 
-One supplier offer is one supplier's listing of one catalog product. A price observation belongs to both an offer and an import batch. A composite foreign key ensures both refer to the same supplier.
+The observation's `SupplierId` participates in two composite foreign keys. This prevents attaching an offer from one supplier to an import batch from another supplier.
