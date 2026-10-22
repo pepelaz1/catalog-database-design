@@ -1,44 +1,44 @@
-# Catalog Database Design
+# Catalog Database Design — SQL Server
 
-A focused PostgreSQL database design sample for a multi-supplier product catalog. It demonstrates the deliverables requested in database-design projects: requirements, an ER diagram, logical and physical schema, executable DDL, indexes, access roles, sample data, and verification queries.
+An independent portfolio example showing how a multi-supplier product catalog moves from requirements and an ER diagram to C# entities and a Microsoft SQL Server database. All suppliers, products and prices are fictional.
 
-This is an **independent portfolio example using synthetic data**. It is not the LaborX client's database and does not claim to model requirements the client has not supplied.
+![ER diagram of the catalog](docs/er-diagram.png)
 
-## Scenario
-
-An online merchant imports product offers from multiple suppliers. One product can have several supplier offers. Every import batch is traceable; prices and availability are recorded as an append-only history. Staff can inspect the latest and previous observed prices without overwriting historical observations.
-
-## Deliverables
+## What is included
 
 - [Requirements and assumptions](docs/requirements.md)
-- [ER diagram](docs/erd.md)
-- [Logical and physical design decisions](docs/design.md)
-- [Schema migration](sql/001_schema.sql)
-- [Synthetic seed data](sql/002_seed.sql)
-- [Practical queries](sql/003_queries.sql)
-- [Least-privilege role template](sql/004_roles.sql)
-- [Database checks](sql/005_checks.sql)
+- [ER diagram and editable Mermaid source](docs/erd.md)
+- [Mapping from ER entities to C# and SQL Server](docs/design.md)
+- [Diagram tools and regeneration](docs/tooling.md)
+- [C# entity classes](CatalogModel/Entities.cs)
+- [T-SQL schema, sample data, queries, roles and checks](sql/README.md)
 
-## Run with PostgreSQL 14+
+The C# classes are a transparent domain model; they do **not** create database tables by themselves. The checked-in T-SQL scripts are the physical database implementation. In an application using EF Core, a `DbContext` and migration would map these same classes to the tables, or database-first scaffolding would generate classes from the SQL Server schema.
 
-Create a disposable database, then run in order:
+## Build the model
 
-```sh
-createdb catalog_design_demo
-psql -v ON_ERROR_STOP=1 -d catalog_design_demo -f sql/001_schema.sql
-psql -v ON_ERROR_STOP=1 -d catalog_design_demo -f sql/002_seed.sql
-psql -v ON_ERROR_STOP=1 -d catalog_design_demo -f sql/003_queries.sql
-psql -v ON_ERROR_STOP=1 -d catalog_design_demo -f sql/005_checks.sql
+```powershell
+dotnet build CatalogModel/CatalogModel.csproj
 ```
 
-`004_roles.sql` is an optional deployment template. It creates database roles and grants privileges, so run it only as a database administrator after replacing its example role names according to the deployment environment. No credentials are stored in this repository.
+## Create and test the database
 
-The schema, seed, queries, role grants, and checks were run successfully against PostgreSQL 14 on 22 October 2026.
+Use a disposable SQL Server database. From an account permitted to create databases:
 
-## What the checks cover
+```powershell
+sqlcmd -S . -E -b -Q "CREATE DATABASE CatalogDesignDemo"
+sqlcmd -S . -E -b -d CatalogDesignDemo -i sql/001_schema.sql
+sqlcmd -S . -E -b -d CatalogDesignDemo -i sql/002_seed.sql
+sqlcmd -S . -E -b -d CatalogDesignDemo -i sql/003_queries.sql
+sqlcmd -S . -E -b -d CatalogDesignDemo -i sql/005_checks.sql
+```
 
-`005_checks.sql` verifies seed counts, referential integrity, latest-price selection, price-change history, and rejection of an invalid negative price. The final negative-price test uses a savepoint so the check does not alter data.
+`004_roles.sql` is an optional administrator-reviewed role template. It is not required for the data checks. Replace `.` with your SQL Server instance name when needed. The scripts assume a **fresh empty database** and intentionally do not delete or replace existing tables.
+
+## Verification status
+
+The C# model can be built locally without third-party packages. The SQL Server scripts are provided with repeatable data and assertions, but database execution must be confirmed on a working SQL Server instance. On the development machine used to prepare this sample, SQL Server connectivity failed during Windows authentication and LocalDB would not start; therefore no successful SQL Server integration run is claimed.
 
 ## Scope
 
-The schema separates products, suppliers, offers, import batches, and observations. It supports one currency per offer and records a new observation when a feed reports a price or availability change. Exchange rates, customer orders, authentication, and retention rules are deliberately outside this sample. Real requirements would determine whether those entities and controls belong in the final design.
+Products, suppliers, supplier offers, import batches and price observations are separated so that a change of price never overwrites history. One currency is stored per offer; currency conversion, orders, authentication, retention and real supplier feeds are outside this focused example.
